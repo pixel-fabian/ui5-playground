@@ -1,5 +1,7 @@
 <mvc:View controllerName="ui5.playground.customfooteractions.controller.MainView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-        <content />
+        <content>
+            <Button id="button1" text="Go to Page1" press="onPressButton1"></Button>
+        </content>
     </Page>
 </mvc:View>

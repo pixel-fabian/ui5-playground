@@ -8,6 +8,10 @@ sap.ui.define(
 
         return Controller.extend("ui5.playground.customfooteractions.controller.MainView", {
             onInit: function () {},
+
+            onPressButton1() {
+                this.getRouter().navTo("RoutePage1");
+            },
         });
     }
 );

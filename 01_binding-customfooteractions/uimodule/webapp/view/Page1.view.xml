@@ -1,0 +1,17 @@
+<mvc:View controllerName="ui5.playground.customfooteractions.controller.Page1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:semantic="sap.f.semantic">
+    <semantic:SemanticPage id="page1" footerCustomActions="{page1Model>/footerButtons}" showFooter="true">
+        <semantic:titleHeading>
+            <Title id="title" text="Page1" />
+          </semantic:titleHeading>
+          <semantic:content>
+            <Button id="button-back" text="Go back" press="onPressButtonBack"></Button>
+        </semantic:content>
+        <semantic:footerCustomActions>
+            <Button
+              text="{page1Model>text}"
+              visible="{page1Model>visible}"
+              enabled="{page1Model>enabled}"
+            />
+          </semantic:footerCustomActions>
+    </semantic:SemanticPage>
+</mvc:View>
