@@ -5,15 +5,16 @@ sap.ui.define(["sap/ui/model/json/JSONModel"], (JSONModel) => {
         },
 
         update() {
+            this.reset();
             const oData = {
                 footerButtons: [
                     {
-                        text: "Button1",
+                        text: "Button-0",
                         visible: true,
                         enabled: true,
                     },
                     {
-                        text: "Button2",
+                        text: "Button-1",
                         visible: true,
                         enabled: true,
                     },
@@ -21,6 +22,14 @@ sap.ui.define(["sap/ui/model/json/JSONModel"], (JSONModel) => {
             };
             this.setData(oData);
             console.log("model updated", this.getData());
+        },
+
+        reset() {
+            const oData = {
+                footerButtons: [],
+            };
+            this.setData(oData);
+            console.log("model reset", this.getData());
         },
     });
 });
