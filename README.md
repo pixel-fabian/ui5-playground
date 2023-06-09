@@ -1,1 +1,1 @@
-# ui5-playground
+# UI5 Playground
