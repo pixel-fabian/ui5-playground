@@ -53,3 +53,34 @@ The documentation [Using Additional Assets (UI5 Web Components)](https://sap.git
 > Additional assets are .json files with the respective data. When you import the dist/Assets.js file of a given package, assets are only registered, but not yet fetched. When they are needed, they are loaded on the fly with dymamic imports, and then used.
 
 This does work only in dev mode.
+
+node_modules\@ui5\webcomponents-fiori\dist\Assets.js:
+
+```javascript
+// main package assets (transitively base, theming and icons)
+import "@ui5/webcomponents/dist/Assets.js";
+// own fiori package assets
+import "./generated/json-imports/Themes.js";
+import "./generated/json-imports/i18n.js";
+//# sourceMappingURL=Assets.js.map
+```
+
+node_modules\@ui5\webcomponents-fiori\dist\generated\json-imports\i18n.js
+
+```javascript
+// @ts-nocheck
+import { registerI18nLoader } from "@ui5/webcomponents-base/dist/asset-registries/i18n.js";
+const importMessageBundle = async (localeId) => {
+    switch (localeId) {
+        case "ar": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-ar" */ "../assets/i18n/messagebundle_ar.json")).default;
+        case "bg": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-bg" */ "../assets/i18n/messagebundle_bg.json")).default;
+        case "ca": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-ca" */ "../assets/i18n/messagebundle_ca.json")).default;
+        case "cnr": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-cnr" */ "../assets/i18n/messagebundle_cnr.json")).default;
+        case "cs": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-cs" */ "../assets/i18n/messagebundle_cs.json")).default;
+        case "cy": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-cy" */ "../assets/i18n/messagebundle_cy.json")).default;
+        case "da": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-da" */ "../assets/i18n/messagebundle_da.json")).default;
+        case "de": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-de" */ "../assets/i18n/messagebundle_de.json")).default;
+        case "el": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-el" */ "../assets/i18n/messagebundle_el.json")).default;
+        case "en": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-en" */ "../assets/i18n/messagebundle_en.json")).default;
+        ...
+```
