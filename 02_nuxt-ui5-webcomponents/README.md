@@ -44,7 +44,7 @@ On generating a static SPA, a lot of unneccessary chunks get loaded into each HT
       ...
 ```
 
-Observations:
+### Observations:
 
 If you comment out `import "@ui5/webcomponents-fiori/dist/Assets.js";` in `app.vue` the chunks are gone, but theming does not work anymore. 
 
@@ -83,4 +83,21 @@ const importMessageBundle = async (localeId) => {
         case "el": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-el" */ "../assets/i18n/messagebundle_el.json")).default;
         case "en": return (await import(/* webpackChunkName: "ui5-webcomponents-fiori-messagebundle-en" */ "../assets/i18n/messagebundle_en.json")).default;
         ...
+```
+
+### Current solution:
+
+nuxt.config.ts:
+
+```javascript
+  // Disable prefetch for dynamic imports, because too many UI5 Web Components Assets would be added
+  // https://github.com/nuxt/nuxt/issues/18376#issuecomment-1431318970
+  hooks: {
+    "build:manifest": (manifest) => {
+      for (const key in manifest) {
+        // or other logic
+        manifest[key].dynamicImports = [];
+      }
+    },
+  },
 ```

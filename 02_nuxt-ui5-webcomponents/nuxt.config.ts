@@ -12,4 +12,14 @@ export default defineNuxtConfig({
       },
     },
   },
+  // Disable prefetch for dynamic imports, because too many UI5 Web Components Assets would be added
+  // https://github.com/nuxt/nuxt/issues/18376#issuecomment-1431318970
+  hooks: {
+    "build:manifest": (manifest) => {
+      for (const key in manifest) {
+        // or other logic
+        manifest[key].dynamicImports = [];
+      }
+    },
+  },
 });
